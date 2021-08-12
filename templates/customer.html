@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="row">
+    <div class="col-md">
+        <div class="card">
+            <p><h3>Customer: {{customers.name}}</h3></p>
+            <a class="btn btn-sm btn-outline-primary btn-block" href="">Update Customer</a>
+            <a class="btn btn-sm btn-outline-danger btn-block" href="">Delete Customer</a>
+        </div>
+    </div>
+    <div class="col-md">
+        <div class="card">
+            <p><h3>Contact Information: </h3></p><br>
+            <p>Email: {{customers.email}}</p>
+            <p>Phone: {{customers.phone}}</p>
+        </div>
+    </div>
+    <div class="col-md">
+        <div class="card text-center">
+            <h3 class="card-header">Total Orders</h3>
+            <h3 class="card-body">{{total_order}}</h3>
+        </div>
+    </div>
+</div><br>
+<div class="row">
+    <div class="card">
+        <form action="" method="GET">
+            {% csrf_token %}
+            {{myfilter.form}}
+            <button>search</button>
+        </form>
+    </div>
+</div><br>
+<div class="row">
+    <table class="table-sm">
+        <tr>
+            <th>Product</th>
+            <th>Category</th>
+            <th>Date Ordered</th>
+            <th>Status</th>
+            <th>Update</th>
+            <th>Delete</th>
+        </tr>
+        {% for order in orders %}
+        <tr>
+            <td>{{order.product}}</td>
+            <td>{{order.products.category}}</td>
+            <td>{{order.date_created}}</td>
+            <td>{{order.status}}</td>
+            <td><a class="btn btn-sm btn-outline-info btn-block" href="">update</a></td>
+            <td><a class="btn btn-outline-danger btn-block" href="">delete</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock %}

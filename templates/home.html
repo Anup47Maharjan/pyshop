@@ -1,4 +1,69 @@
 {% extends 'base.html' %}
-{% block content %}
-<h4>hello</h4>
+{% block content %}<br>
+<div class="row text-center">
+    <div class="col">
+        <div class="card">
+            <h3 class="card-header">Total Orders</h3>
+            <h3 class="card-body">{{total_order}}</h3>
+        </div>
+    </div>
+    <div class="col">
+        <div class="card">
+            <h3 class="card-header">Pending Orders</h3>
+            <h3 class="card-body">{{pending_order}}</h3>
+        </div>
+    </div>
+    <div class="col">
+        <div class="card">
+            <h3 class="card-header">In process Orders</h3>
+            <h3 class="card-body">{{in_process}}</h3>
+        </div>
+    </div>
+</div><br>
+<div class="row">
+    <div class="col">
+        <p><h3>Customer:</h3></p><br>
+        <div class="card">
+            <table class="table-sm">
+                <tr>
+                    <th></th>
+                    <th>customer</th>
+                    <th>phone</th>
+                </tr>
+                {% for customer in customers %}
+                <tr>
+                    <td><a href="{% url 'customer' customer.id %}">views</a></td>
+                    <td>{{customer.name}}</td>
+                    <td>{{customer.phone}}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+    <div class="col">
+        <p><h3>Last 5 orders:</h3></p><br>
+        <div class="card">
+            <a class="btn btn-sm btn-primary btn-block" href="{% url 'createOrder' %}">create order</a>
+            <table class="table-sm">
+                <tr>
+                    <th>Products</th>
+                    <th>Date Ordered</th>
+                    <th>Status</th>
+                    <th>Update</th>
+                    <th>Remove</th>
+                </tr>
+                {% for order in orders %}
+                <tr>
+                    <td>{{order.product}}</td>
+                    <td>{{order.date_created}}</td>
+                    <td>{{order.status}}</td>
+                    <td><a class="btn btn-sm btn-outline-info" href="{% url 'updateOrder' order.id %}">update</a></td>
+                    <td><a class="btn btn-sm btn-outline-danger" href="{% url 'deleteOrder' order.id %}">delete</a></td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+</div>
+
 {% endblock %}
