@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="row">
+    <div class="col-md-3 offset-5">
+        <div class="card bg-info">
+            <h3 class="text-center">ADD PRODUCT</h3>
+            <form action="" method="POST" class="offset-1">
+                {% csrf_token %}
+                {{forms.as_p}}
+                <input type="submit" value="Add Product">
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

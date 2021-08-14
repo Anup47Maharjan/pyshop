@@ -1,17 +1,20 @@
-<div class="card">
+{% extends 'base.html' %}
+{% block content%}
+<div class="card offset-4 bg-info" style="width: 20rem;">
     <h3 class="text-center">REGISTER ACCOUNT</h3><BR>
-    <form action="" method="POST">
+    <form action="" method="POST" class="offset-1">
         {% csrf_token %}
         {{forms.username.label}}
-        {{forms.username}}<hr>
+        {{forms.username}}<br><br>
         {{forms.email.label}}
-        {{forms.email}}<hr>
+        {{forms.email}}<br><br>
         {{forms.password1.label}}
-        {{forms.password1}}<hr>
+        {{forms.password1}}<br><br>
         {{forms.password2.label}}
-        {{forms.password2}}
+        {{forms.password2}}<br>
         <input type="submit" value="Register Account">
     </form>
     {{forms.errors}}
     <P>Already Have an account?<a href="{% url 'loginPage' %}">login</a></P>
 </div>
+{% endblock %}

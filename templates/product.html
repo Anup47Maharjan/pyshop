@@ -3,7 +3,9 @@
 <div class="row">
     <div class="card"><h3>Product</h3></div>
 </div><br>
-<div class="card">
+<div class="row">
+    <div class="col-md-offset-3">
+      <div class="card">
     <table class="table table-sm">
         <tr>
             <th>Product</th>
@@ -19,4 +21,7 @@
         {% endfor %}
     </table>
 </div>
+    </div>
+</div>
+<div class="card text-center"><h2><a class="btn btn-sm btn-info" href="{% url 'add_product' %}">Add Products</a></h2></div>
 {% endblock %}

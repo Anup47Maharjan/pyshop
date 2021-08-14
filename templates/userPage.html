@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="card text-center bg-info offset-4" style="width: 20rem;"><h3>User Profile</h3></div><br>
+<div class="row text-center">
+    <div class="col">
+        <div class="card">
+            <h3 class="card-header">Total Orders</h3>
+            <h3 class="card-body">{{total_order}}</h3>
+        </div>
+    </div>
+    <div class="col">
+        <div class="card">
+            <h3 class="card-header">Pending Orders</h3>
+            <h3 class="card-body">{{pending_order}}</h3>
+        </div>
+    </div>
+    <div class="col">
+        <div class="card">
+            <h3 class="card-header">Inprocess Orders</h3>
+            <h3 class="card-body">{{inprocess_order}}</h3>
+        </div>
+    </div>
+</div><br>
+<div style="row">
+    <div class="card" style="width: 1000px;">
+        <table class="table-sm">
+            <tr class="bg-info">
+                <th>Product</th>
+                <th>Category</th>
+                <th>Status</th>
+            </tr>
+            {% for order in orders %}
+            <tr>
+                <td>{{order.product}}</td>
+                <td>{{order.product.category}}</td>
+                <td>{{order.status}}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</div>
+{% endblock %}

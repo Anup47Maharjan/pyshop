@@ -1,10 +1,10 @@
 {% extends 'base.html' %}
-{% block content %}
-<div class="card card-body">
-    <form action="" method="POST">
+{% block content %}<br>
+<div class="card card-body bg-success offset-3" style="width: 40rem;">
+    <form action="" method="POST" class="offest-1">
         {% csrf_token %}
         {{forms}}
-        <input type="submit" value="confirm">
+        <input type="submit" value="confirm" class="btn btn-sm btn-info">
     </form>
 </div>
 {% endblock %}
